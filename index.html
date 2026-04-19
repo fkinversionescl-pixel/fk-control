@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FK.Inversiones</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial;
+    text-align: center;
+}
+
+#mensaje {
+    display: none;
+    font-size: 28px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="mensaje">
+⚠ SERVICIO SUSPENDIDO<br><br>
+Regularice su pago<br><br>
+FK.Inversiones
+</div>
+
+<script>
+const URL_ESTADO = "https://fkinversionescl-pixes.github.io/fk-control/fk.tv001.txt";
+
+async function verificar() {
+    try {
+        const res = await fetch(URL_ESTADO + "?t=" + Date.now());
+        const txt = (await res.text()).trim().toLowerCase();
+
+        if (txt === "bloqueado") {
+            document.getElementById("mensaje").style.display = "block";
+        } else {
+            document.getElementById("mensaje").style.display = "none";
+        }
+
+    } catch (e) {}
+}
+
+verificar();
+setInterval(verificar, 10000);
+</script>
+
+</body>
+</html>
