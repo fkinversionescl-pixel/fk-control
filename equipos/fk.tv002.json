@@ -1,8 +1,9 @@
-{
+}{
   "id": "fk.tv001",
   "estado": "activo",
   "titulo": "FK TV",
   "mensaje": "",
   "telefono": "950832918",
-  "instagram": "fk.inversiones"
+  "instagram": "fk.inversiones",
+  "version": "1.0"
 }
